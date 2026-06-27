@@ -1,5 +1,5 @@
 import { BrandMark } from "@/components/brand-mark";
-import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { PageLayout } from "@/components/ui/page-layout";
 import { Section } from "@/components/ui/section";
@@ -28,15 +28,21 @@ export default function Home() {
               </div>
 
               <div className="flex w-full flex-col gap-3 pt-1 sm:w-auto sm:flex-row">
-                <Button className="w-full sm:w-auto sm:min-w-44">Sign In</Button>
-                <Button variant="secondary" className="w-full sm:w-auto sm:min-w-44">
+                <ButtonLink href="/login" className="w-full sm:w-auto sm:min-w-44">
+                  Sign In
+                </ButtonLink>
+                <ButtonLink
+                  href="/register"
+                  variant="secondary"
+                  className="w-full sm:w-auto sm:min-w-44"
+                >
                   Create Parent Account
-                </Button>
+                </ButtonLink>
               </div>
             </div>
           </div>
 
-          <div className="grid gap-4 sm:gap-5 lg:grid-cols-3 lg:items-stretch">
+          <div className="grid gap-4 sm:gap-5 lg:grid-cols-2 lg:items-stretch">
             <Card className="flex h-full flex-col justify-between border-slate-200 bg-slate-50/85 p-6 shadow-none">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-red-600">
@@ -48,20 +54,6 @@ export default function Home() {
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-600">
                 Private lesson scheduling for the summer season.
-              </p>
-            </Card>
-
-            <Card className="flex h-full flex-col justify-between border-slate-200 bg-slate-50/85 p-6 shadow-none">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-red-600">
-                  Announcements
-                </p>
-                <p className="mt-4 text-xl font-semibold leading-7 text-navy-800">
-                  Placeholder for current announcements
-                </p>
-              </div>
-              <p className="mt-4 text-sm leading-6 text-slate-600">
-                Team updates and registration notices will appear here.
               </p>
             </Card>
 

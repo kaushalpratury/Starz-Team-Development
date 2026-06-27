@@ -1,4 +1,5 @@
-import type { ButtonHTMLAttributes } from "react";
+import Link, { type LinkProps } from "next/link";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = {
@@ -9,6 +10,14 @@ const buttonVariants = {
 };
 
 type ButtonVariant = keyof typeof buttonVariants;
+
+export function buttonClassName(variant: ButtonVariant = "primary", className?: string) {
+  return cn(
+    "inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold tracking-[0.01em] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:ring-4 focus-visible:ring-navy-100 disabled:pointer-events-none disabled:opacity-50",
+    buttonVariants[variant],
+    className,
+  );
+}
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -23,12 +32,18 @@ export function Button({
   return (
     <button
       type={type}
-      className={cn(
-        "inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold tracking-[0.01em] transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:ring-4 focus-visible:ring-navy-100 disabled:pointer-events-none disabled:opacity-50",
-        buttonVariants[variant],
-        className,
-      )}
+      className={buttonClassName(variant, className)}
       {...props}
     />
   );
+}
+
+interface ButtonLinkProps
+  extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href">,
+    LinkProps {
+  variant?: ButtonVariant;
+}
+
+export function ButtonLink({ className, variant = "primary", ...props }: ButtonLinkProps) {
+  return <Link className={buttonClassName(variant, className)} {...props} />;
 }

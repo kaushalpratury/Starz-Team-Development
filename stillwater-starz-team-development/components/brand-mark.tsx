@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
-export function BrandMark() {
+export function BrandMark({ className }: { className?: string }) {
   return (
     <Image
       src="/images/stillwater-starz-logo.png"
@@ -8,7 +9,7 @@ export function BrandMark() {
       width={980}
       height={500}
       priority
-      className="h-auto w-full object-contain"
+      className={cn("h-auto w-full object-contain", className)}
       sizes="(max-width: 768px) 84vw, 720px"
     />
   );
